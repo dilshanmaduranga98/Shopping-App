@@ -1,0 +1,518 @@
+﻿@page "/cart"
+@inject IOrderServices OrderService
+@inject IUserServices UserService
+@inject IProdcutServices ProductService
+@attribute [Authorize]
+
+<link rel="stylesheet" href="/css/Cart.css"/>
+
+<PageTitle>Cart</PageTitle>
+<ConfirmDialog @ref="dialog" />
+<div class="main-cart">
+    <nav aria-label="breadcrumb" style="padding:0; margin:0;">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Cart</li>
+        </ol>
+    </nav>
+
+
+    <div class="cart-title">
+        <h1>Your Shopping Bag</h1>
+    </div>
+
+    <div class="cart-items">
+        <div class="cart-item-details table-responsive">
+            <div class="caption">
+                <small>create at : @cartInfo.cart_create_date</small>
+                <small>last update: @cartInfo.cart_update_date</small>
+            </div>
+            <table class="table align-middle">
+
+               
+                <thead>
+                    <tr>
+                        
+                        <th scope="col">Item</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Total</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+
+                <tbody >
+                    @if (allCartResult)
+                    {  
+                            @foreach (var item in cartItems)
+                            {
+                                
+                                    ItemCount = item.quantity;
+
+                                    <tr id="@item.productID">
+
+                                        <td class="table-item">
+                                            <div class="tabel-item-data">
+                                                <div class="item-img-section">
+                                                    <img src="@item.imageURL" />
+                                                </div>
+
+                                                <div class="table-item-data-details">
+                                                    <h3>@item.name</h3>
+                                                    <p>@item.description</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="col cartItem-price">$@item.price</td>
+                                        <td class="col">
+                                            <div class="count-section-cart">
+                                                <button @onclick="() => updateQuantityCartItem(item, '-')" class="item-count-btn">-</button>
+                                                <label class="item-count" id="@item.productID">@item.quantity</label>
+                                                <button @onclick="() => updateQuantityCartItem(item, '+')" class="item-count-btn">+</button>
+                                            </div>
+                                        </td>
+                                        <td class="col cartItem-price" style="width: 50px !important;">$@FormatValue(item.price * ItemCount)</td>
+                                        <td class="col cart-item-close">
+                                            <button class="close-icon" @onclick="() => deleteCartItem(item, item.name)">
+                                                <i class="bi bi-x-circle-fill"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                
+                        }
+
+                        if (cartItems == null || cartItems.Count == 0)
+                        {
+                            
+                            <tr class=" flex-row align-items-center justify-content-center w-100" style="height:65vh;">
+                                <th colspan="5" class="text-center">
+                                    <h3 class="py-5 fw-normal" style="color:#555">Your cart is empty &#128557;. <a style="color:#ff6a00" href="/">Continue shopping!</a></h3>
+                                </th>
+
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        
+                            <tr class=" flex-row align-items-center justify-content-center w-100">
+                                <th colspan="5" class="text-center">
+                                    <Spinner Type="SpinnerType.Dots" Class="me-3" Color="SpinnerColor.Warning" Size="SpinnerSize.Large" />
+                                </th>
+
+                            </tr>
+                        
+                    }
+                      
+                </tbody>
+
+            </table>
+
+            <div class="caption">
+                <small>total items : @cartInfo.totalItems</small>
+            </div>
+        </div>
+
+        <div class="cart-item-total">
+            <div class="cart-items-total-discounts">
+                <h2 style="display:flex; width:100%; justify-content:center; padding:0px 0 20px 0;">Order Summary</h2>
+                <table class="table table-borderless">
+                    <tbody>
+                        @if (allCartResult)
+                        {
+                            <tr>
+                                <th scope="row">Total</th>
+                                <td>$@FormatValue(SubTotal)</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Shipping Fee</th>
+                                <td>$0.00</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Discount/Coupens</th>
+                                <td>$0.00</td>
+                            </tr>
+
+                            <tr>
+
+                                <th scope="row">Sub Total</th>
+                                <td>$@FormatValue(SubTotal)</td>
+                            </tr>
+                        }else
+                        {
+                            <tr class="col-2 flex-row align-items-center justify-content-center w-100">
+                                <th class="text-center">
+                                    <Spinner Type="SpinnerType.Dots" Class="me-3" Color="SpinnerColor.Warning" Size="SpinnerSize.Small" />
+                                </th>
+
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="cart-items-shipping-details">
+                <hr />
+                <h4 style="padding:10px 0 0 0;">Shipping Details</h4>
+                <div style="padding:30px 0;">
+                    <table class="table table-borderless">
+                        <tbody>
+                            @if(allUserResult)
+                            {
+                                <tr>
+                                    <th scope="row">First Name</th>
+                                    <td>@userInfo.firstName</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Last Name</th>
+                                    <td>@userInfo.LastName</td>
+                                </tr>
+
+                                <tr>
+
+                                    <th scope="row">PhoneNumber</th>
+                                    <td>@userInfo.phoneNumber</td>
+                                </tr>
+                            }else
+                            {
+                                <tr class="col-2 flex-row align-items-center justify-content-center w-100">
+                                    <th class="text-center">
+                                        <Spinner Type="SpinnerType.Dots" Class="me-3" Color="SpinnerColor.Warning" Size="SpinnerSize.Small" />
+                                    </th>
+                                    
+                                </tr>
+                                
+                            }
+
+
+                            @if(allAddressResult)
+                            {
+                                @foreach (var address in userAddresses)
+                                {
+                                    if (address.IsPrimary == true)
+                                    {
+
+                                        <tr>
+                                            <th scope="row">Address</th>
+                                            <td>@address.street , @address.city , @address.country</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Postal Code</th>
+                                            <td>@address.postalCode</td>
+                                        </tr>
+
+                                    }
+
+                                }
+                            }
+
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <button class="checkout-btn" @onclick="CheckOut">Checkout Now!</button>
+        </div>
+    </div>
+    <div class="cart-section-one">
+        <h2 class="py-2 fs-4">You might also like</h2>
+        <div class="second-item-section">
+
+            @if (!allLikeResult)
+            {
+                <div class="col" style="display:flex; flex-direction:column; width:100%; justify-content:center; align-items:center;">
+                    <Spinner Type="SpinnerType.Dots" Class="me-3" Color="SpinnerColor.Warning" Size="SpinnerSize.ExtraLarge" />
+                </div>
+
+            }
+            else
+            {
+                <div class="row g-5 item-container">
+                    @foreach (var product in products)
+                    {
+                        <div class="col">
+
+                            <ItemCard ItemID="@product.productID"
+                                      ImageUrl="@product.imageURL"
+                                      Title=@product.name
+                                      Description=@product.description
+                                      Price=@product.price
+                                      Discount=@product.discount />
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+
+
+</div>
+
+@code {
+
+    [Inject] protected ToastService ToastService { get; set; } = default!;
+
+
+    public int ItemCount { get; set; } = 1;
+    List<UserCartModel>? cartItems = null;
+    CartInfoModel cartInfo = new CartInfoModel();
+    UserModel userInfo = new UserModel();
+    List<AddressModel> userAddresses = new List<AddressModel>();
+    private List<ProductModel> products = new List<ProductModel>();
+   
+
+    private int itemTotal;
+    private double SubTotal;
+    private bool allCartResult;
+    private bool allUserResult;
+    private bool allAddressResult;
+    private bool ItemStatus = false;
+    private bool allLikeResult = false;
+
+
+    //confirm dialog
+    private ConfirmDialog dialog = default!;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        allCartResult = await GetAllCartItems();
+        allUserResult = await GetUserInfo();
+        allAddressResult = await GetUserAddressData();
+        allLikeResult = await GetLikeProducts();
+
+    }
+
+    private void ItemCountIncrease(int quantity)
+    {
+        if (quantity >= 20)
+        {
+            quantity = 20;
+        }
+        else
+        {
+            quantity += 1;
+            Console.WriteLine(quantity);
+        }
+
+    }
+
+    private void ItemCountDecrease(int quantity)
+    {
+        if (quantity == 0 || quantity < 0)
+        {
+            quantity = 0;
+        }
+        else
+        {
+            quantity -= 1;
+        }
+    }
+
+    private async Task<bool> GetAllCartItems()
+    {
+        var result = await OrderService.ViewAllCartItems();
+
+        if(result.cartItems != null)
+        {
+
+            cartInfo = result;
+            cartItems = result.cartItems;
+            SubTotal = cartInfo.subTotal;
+            return true;
+
+        }else
+        {
+            cartInfo = result;
+            cartItems = null;
+            return false;
+        }
+    }
+
+    private async Task updateQuantityCartItem(UserCartModel cartItem, char symbol)
+    {
+        try
+        {
+
+            if(symbol == '-' )
+            {
+                if(cartItem.quantity > 1)
+                {
+                    cartItem.quantity -= 1;
+                    var result = await OrderService.UpdateCartItemQuntity(cartItem.productID, cartItem.quantity);
+
+
+                    SubTotal -= cartItem.price;
+
+
+                    if (result)
+                    {
+                        ToastService.Notify(new(ToastType.Success, $"Cart item quantity updated successfully!"));
+                    }
+                    else
+                    {
+                        ToastService.Notify(new(ToastType.Warning, $"Cart item quantity not updated!."));
+                    }
+                }else
+                {
+                    ToastService.Notify(new(ToastType.Warning, $"Can't updated quantiy!"));
+                }
+
+
+            }else if(symbol == '+')
+            {
+                cartItem.quantity += 1;
+                var result = await OrderService.UpdateCartItemQuntity(cartItem.productID, cartItem.quantity);
+
+
+
+                SubTotal +=  cartItem.price;
+
+
+                if (result)
+                {
+                    ToastService.Notify(new(ToastType.Success, $"Cart item quantity updated successfully!"));
+                }
+                else
+                {
+                    ToastService.Notify(new(ToastType.Warning, $"Cart item quantity not updated!."));
+                }
+
+            }
+
+
+            //Console.WriteLine(result);
+            Console.WriteLine($"productID :{cartItem.productID}, quantity: {cartItem.quantity}");
+
+
+
+        }catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
+
+    private async Task deleteCartItem(UserCartModel item, string name)
+    {
+        try
+        {
+            var options = new ConfirmDialogOptions
+                {
+                    YesButtonColor = ButtonColor.Success,
+                    NoButtonColor = ButtonColor.Danger
+                };
+            var confirmation = await dialog.ShowAsync(
+            title: $"Are you sure you want to delete ' {name} '7?",
+            message1: "Once deleted can not be rolled back.Do you want to proceed?",
+            confirmDialogOptions: options);
+            if(confirmation)
+            {
+                bool result = await OrderService.DeleteCartItem(item.productID);
+                if (result)
+                {
+                    ToastService.Notify(new(ToastType.Success, $"Cart item delete successfully."));
+                    var itemToRemove = cartItems.FirstOrDefault(x => x.productID == item.productID);
+                    cartItems.Remove(itemToRemove);
+                    SubTotal -= item.price * item.quantity; 
+
+                    if(cartItems == null )
+                    {
+                        ItemStatus = false;
+                    }else
+                    {
+                        ItemStatus = true;
+                    }
+                }
+                else
+                {
+                    ToastService.Notify(new(ToastType.Danger, $"Error occured, When try to delete Cart item!"));
+                }
+            }
+            else
+            {
+                ToastService.Notify(new(ToastType.Danger, $"Cart item not delete!"));
+            }
+
+        }catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+
+    }
+
+    private async Task<bool> GetUserInfo()
+    {
+        try
+        {
+            var result = await UserService.UserInfo();
+
+            if(result != null)
+            {
+                userInfo = result;
+                return true;
+            }else
+            {
+                return false;
+            }
+        }catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
+
+    private async Task<bool> GetUserAddressData()
+    {
+        try
+        {
+            userAddresses =  await UserService.UserAddressInfo();
+            if(userAddresses != null)
+            {
+                return true;
+            }else
+            {
+                return false;
+            }
+
+        }catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
+
+    private async Task<bool> GetLikeProducts()
+    {
+        try
+        {
+            products = await ProductService.GetAllProducts();
+
+            if(products != null)
+            {
+                return true;
+            }else
+            {
+                return false;
+            }
+        }catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
+
+    private async Task CheckOut()
+    {
+        try 
+        {
+            var result = await OrderService.CheckOut();
+
+        }catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
+
+    private string FormatValue(double value)
+    {
+        return value.ToString("F2");
+    }
+}

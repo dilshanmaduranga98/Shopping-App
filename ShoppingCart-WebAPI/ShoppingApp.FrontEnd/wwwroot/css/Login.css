@@ -1,0 +1,129 @@
+﻿body {
+}
+
+.login-main-container
+{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height:82vh;
+    flex-wrap:wrap;
+}
+
+.image-section
+{
+    flex-basis:45%;
+    width:100%;
+    /*border-right:1px solid #dedede;*/
+}
+
+    .image-section img 
+    {
+        width:90%;
+        object-fit:fill;
+    }
+
+.login-sub-container {
+    flex-basis: 55%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 20px 40px;
+    padding-bottom: 60px;
+    border-radius: 8px;
+    /*box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05), 0 6px 14px 0 rgba(0, 0, 0, 0.09);*/
+}
+
+.main-container {
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top:100px;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width:60%;
+}
+
+
+.header-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+    .header-section h1 
+    {
+        font-weight:500;
+    }
+
+    .form-group {
+        margin: 10px 0;
+    }
+
+.form-group input
+{
+    min-height: 50px;
+    
+}
+
+        .form-group .validation-message {
+            font-size: 14px !important;
+        }
+        .login-form .btn {
+            background-color: #ff6a00;
+            border: none;
+            margin-top: 30px;
+        }
+
+.login-form .btn:hover {
+   background-color: #fc7b1f;
+}
+
+.form-control:focus {
+    border-color: rgb(4, 121, 248, 0.60);
+    box-shadow: 0 1px 1px rgb(4, 121, 248, 0.30) inset, 0 0 8px rgb(4, 121, 248, 0.4);
+    outline: 0 none;
+}
+
+.form-control::placeholder {
+    color: #808080;
+    /*color:rgb(4, 121, 248, 0.60)*/
+}
+
+
+.access-token
+{
+    width:900px;
+    height:auto;
+    overflow-x:scroll;
+}
+
+.signup-messsage
+{
+    padding-top:10px;
+    color:#808080;
+}
+
+    .signup-messsage a {
+        text-decoration: none;
+        color: rgb(255, 0, 0);
+        font-weight: 300;
+        padding: 0 0px;
+        font-size: 16px;
+    }
+
+.warning {
+    color: rgb(255, 0, 0) !important;
+}

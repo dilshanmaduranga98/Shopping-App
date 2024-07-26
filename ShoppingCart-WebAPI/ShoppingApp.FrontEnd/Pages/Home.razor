@@ -1,0 +1,432 @@
+﻿@page "/"
+@inject IProdcutServices ProductServices
+
+<link rel="stylesheet" href="/css/Home.css"
+
+<PageTitle>Home</PageTitle>
+
+<div class="main-container-home">
+    <div class="first-section">
+        <div></div>
+        <div class="main-title">
+            <h1>
+                Upgrade your closet today
+            </h1>
+            <p>Explore our curated collections and find the perfect outfit for every occasion</p>
+
+            <AuthorizeView>
+                <Authorized>
+                    <a href="/products" role="button" class="explor-button">Explore more</a>
+                </Authorized>
+                <NotAuthorized>
+                    <a href="/login" role="button" class="explor-button">Explore more</a>
+                </NotAuthorized>
+            </AuthorizeView>
+            
+        </div>
+        <div class="heda-img-section">
+            <div class="head-img">
+                @* <img src="/headset-img.png" alt="head-set" /> *@
+                <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            @* <div class="liner-background"></div> *@
+                            <img src="/smart-tv.png" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Brilliance in every pixel</h5>
+                                <p>Immerse yourself in vivid brilliance with our innovative Smart TVs.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            
+                            <img src="/headset-img.png" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Immerse yourself in sound</h5>
+                                <p>Experience crystal-clear audio with our cutting-edge headset technology</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            
+                            <img src="/mac-book.png" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Elevate your productivity</h5>
+                                <p>Seamless efficiency and elegant design, redefining your productivity</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="category-section">
+    <div class="category-title-section">
+        <h1>Explore Our Diverse Categories</h1>
+        <p>Discover everything you need in one convenient place.</p>
+        <AuthorizeView>
+            <Authorized>
+                <a href="/products">find more <i class="bi bi-arrow-up-right-circle"></i> </a>
+            </Authorized>
+            <NotAuthorized>
+                <a href="/login">find more <i class="bi bi-arrow-up-right-circle"></i> </a>
+            </NotAuthorized>
+        </AuthorizeView>
+        
+    </div>
+    <div class="container text-center">
+        <div class="row row-cols-2">
+
+            <AuthorizeView>
+                <Authorized>
+                    <a class="col-sm column levelOne" href="/products/4">
+                        <div class="category-div">
+                            <h2>Costume</h2>
+                            <p>Express your style</p>
+                        </div>
+                        <img src="/bag.png" />
+                    </a>
+                </Authorized>
+
+                <NotAuthorized>
+                    <a class="col-sm column levelOne" href="/login">
+                        <div class="category-div">
+                            <h2>Costume</h2>
+                            <p>Express your style</p>
+                        </div>
+                        <img src="/bag.png" />
+                    </a>
+                </NotAuthorized>
+            </AuthorizeView>
+            
+
+            <div class="col-sm column column-two">
+
+                <div class="row">
+                    <AuthorizeView>
+                        <Authorized>
+                            <a class="col col-sm column levelTwo-one" href="/products">
+                                <div class="category-div">
+                                    <h2>Furniturs</h2>
+                                    <p>Transform your space</p>
+                                </div>
+                                <img src="/chair.png" />
+                            </a>
+                        </Authorized>
+                        <NotAuthorized>
+                            <a class="col col-sm column levelTwo-one" href="/login">
+                                <div class="category-div">
+                                    <h2>Furniturs</h2>
+                                    <p>Transform your space</p>
+                                </div>
+                                <img src="/chair.png" />
+                            </a>
+                        </NotAuthorized>
+                    </AuthorizeView>
+
+                </div>
+
+                <div class="row">
+                    <AuthorizeView>
+                        <Authorized>
+                            <a class="col col-sm column levelTwo-two" href="/products/3">
+                                <div class="category-div">
+                                    <h2>Electronic</h2>
+                                    <p>Discover innovation</p>
+                                </div>
+                                <img src="/vr-boxx.png" />
+                            </a>
+                        </Authorized>
+                        <NotAuthorized>
+                            <a class="col col-sm column levelTwo-two" href="/login">
+                                <div class="category-div">
+                                    <h2>Electronic</h2>
+                                    <p>Discover innovation</p>
+                                </div>
+                                <img src="/vr-boxx.png" />
+                            </a>
+                        </NotAuthorized>
+                    </AuthorizeView>
+                   
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="second-section">
+    <div class="second-title">
+        <h1>Trending Now &#128293;</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+    </div>
+
+    <div class="second-item-section">
+        
+            @if(!allResult)
+            {
+                <div class="col" style="display:flex; flex-direction:column; width:100%; justify-content:center; align-items:center;">
+                   @*  <div class="spinner-border text-warning" role="status" >
+                        <span class="visually-hidden">Loading...</span>
+                    </div> *@
+
+                <Spinner Type="SpinnerType.Dots" Class="me-3" Color="SpinnerColor.Warning" Size="SpinnerSize.ExtraLarge" />
+                </div>
+
+            }else
+            {
+                <div class="row g-5 item-container">
+                    @foreach (var product in products)
+                    {
+                        <div class="col">
+
+                            <ItemCard
+                                ItemID="@product.productID"
+                                ImageUrl="@product.imageURL"
+                                      Title=@product.name
+                                      Description=@product.description
+                                      Price=@product.price
+                                      Discount=@product.discount />
+                        </div>
+                    }
+                </div>
+            }
+           
+
+        
+    </div>
+</div>
+
+<div class="second-third_section">
+    <div class="gradient-container"></div>
+    <div class="second-third-title-section">
+        <h1>Elevate Your Space with Timeless Furniture</h1>
+        <p>Explore our newest arrivals, designed to enrich your living spaces</p>
+        <AuthorizeView>
+            <Authorized>
+                <a href="/products" role="button" class="explor-button">Explore more</a>
+            </Authorized>
+            <NotAuthorized>
+                <a href="/login" role="button" class="explor-button">Explore more</a>
+            </NotAuthorized>
+        </AuthorizeView>
+    </div>
+</div>
+
+<div class="second-section">
+    <div class="second-title">
+        <h1>Latest Products </h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+    </div>
+
+    <div class="second-item-section">
+       
+
+            @if (!allResult)
+            {
+                <div class="col" style="display:flex; width:100%; justify-content:center; align-items:center;">
+                    @* <div class="spinner-border text-warning" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div> *@
+
+                <Spinner Type="SpinnerType.Dots" Class="me-3" Color="SpinnerColor.Warning" Size="SpinnerSize.ExtraLarge" />
+                </div>
+            }
+            else
+            {
+                <div class="row g-5 item-container">
+                    @foreach (var product in products)
+                    {
+                        <div class="col">
+
+                            <ItemCard ImageUrl="@product.imageURL"
+                                      Title=@product.name
+                                      Description=@product.description
+                                      Price=@product.price
+                                      Discount=@product.discount />
+                        </div>
+                    }
+                </div>
+            }
+
+        
+    </div>
+
+    
+                   
+
+           
+</div>
+
+<div class="third_section">
+    <div class="gradient-container"></div>
+    <div class="third-title-section">
+        <h1>Unveil the Latest in Cutting-Edge Technology and Style</h1>
+        <p>Discover our freshest arrivals, crafted to enhance your everyday experiences</p>
+        <AuthorizeView>
+            <Authorized>
+                <a href="/products" role="button" class="explor-button">Explore more</a>
+            </Authorized>
+            <NotAuthorized>
+                <a href="/login" role="button" class="explor-button">Explore more</a>
+            </NotAuthorized>
+        </AuthorizeView>
+    </div>
+</div>
+
+<div class="second-section">
+    <div class="second-title">
+        <h1>New Arrivals </h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+    </div>
+
+    <div class="second-item-section">
+       
+
+            @if (!allResult)
+            {
+                <div class="col" style="display:flex; width:100%; justify-content:center; align-items:center;">
+                    @* <div class="spinner-border text-warning" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div> *@
+                <Spinner Type="SpinnerType.Dots" Class="me-3" Color="SpinnerColor.Warning" Size="SpinnerSize.ExtraLarge" />
+                </div>
+            }
+            else
+            {
+                <div class="row g-5 item-container">
+                    @foreach (var product in products)
+                    {
+                        <div class="col">
+
+                            <ItemCard ImageUrl="@product.imageURL"
+                                      Title=@product.name
+                                      Description=@product.description
+                                      Price=@product.price
+                                      Discount=@product.discount />
+                        </div>
+                    }
+                </div>
+            }
+
+        
+    </div>
+</div>
+
+<div class="about-section">
+    <div class="about-us">
+        <h1>About Us</h1>
+        <p>Welcome to ShoppingApp, where style meets convenience. Explore our curated selection of fashion, electronics, and home essentials—all handpicked for quality and trendiness. With secure payment options and hassle-free shopping, ShoppingApp ensures a seamless experience from browsing to delivery. Join thousands of satisfied shoppers and discover why ShoppingApp is your go-to destination for online shopping.</p>
+        <p class="signature">- shoppingApp team -</p>
+    </div>
+
+    
+</div>
+
+
+@code 
+{
+    private string name = string.Empty;
+
+
+    [Parameter]
+    public int categoryID { get; set; } = 0;
+
+    private List<ProductModel> products = new List<ProductModel>();
+    private List<ProductModel> productsByCategory = new List<ProductModel>();
+    private List<CategoryModel> ProductCtegories = new List<CategoryModel>();
+
+    private bool allResult;
+    private bool categoryResult;
+    private string CategoryName = string.Empty;
+
+
+    protected override async Task OnParametersSetAsync()
+    {
+        productsByCategory = await ProductServices.GetByCategory(categoryID);
+        ProductCtegories = await ProductServices.GetAllCategories();
+        foreach (var category in ProductCtegories)
+        {
+            if (categoryID == category.categoryID)
+            {
+                CategoryName = category.name;
+            }
+        }
+
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        allResult = await GetData();
+        categoryResult = await GetCategories();
+    }
+
+    private async Task<bool> GetData()
+    {
+        try
+        {
+            products = await ProductServices.GetAllProducts();
+            
+            if (products == null)
+            {
+               
+                return false;
+
+            }else
+            {
+                return true;
+            }
+            
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            throw new Exception("Products not found!");
+
+        }
+    }
+
+
+    private async Task<bool> GetCategories()
+    {
+        try
+        {
+            ProductCtegories = await ProductServices.GetAllCategories();
+            if(ProductCtegories != null)
+            {
+                return true;
+            }else
+            {
+                return false;
+            }
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            throw new Exception("Categories not found!");
+
+        }
+    }
+
+
+
+}

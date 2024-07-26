@@ -1,0 +1,185 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\obj\\Debug\\net8.0\\compressed\\u1w0o3jk7o.gz",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\obj\\Debug\\net8.0\\scopedcss\\bundle\\ShoppingApp.FrontEnd.styles.css",
+      "PackagePath": "staticwebassets\\ShoppingApp.FrontEnd.styles.css"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\113435.jpg",
+      "PackagePath": "staticwebassets\\113435.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\7695.jpg",
+      "PackagePath": "staticwebassets\\7695.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\aboutUs-background.jpg",
+      "PackagePath": "staticwebassets\\aboutUs-background.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\bag.png",
+      "PackagePath": "staticwebassets\\bag.png"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\bannerImg.jpg",
+      "PackagePath": "staticwebassets\\bannerImg.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\blue-knitted-bag-still-life.png",
+      "PackagePath": "staticwebassets\\blue-knitted-bag-still-life.png"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\chair.png",
+      "PackagePath": "staticwebassets\\chair.png"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\complete-order.png",
+      "PackagePath": "staticwebassets\\complete-order.png"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\cosmetic.jpg",
+      "PackagePath": "staticwebassets\\cosmetic.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\css\\Cart.css",
+      "PackagePath": "staticwebassets\\css\\Cart.css"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\css\\Footer.css",
+      "PackagePath": "staticwebassets\\css\\Footer.css"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\css\\Home.css",
+      "PackagePath": "staticwebassets\\css\\Home.css"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\css\\ItemCard.css",
+      "PackagePath": "staticwebassets\\css\\ItemCard.css"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\css\\Login.css",
+      "PackagePath": "staticwebassets\\css\\Login.css"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\css\\NavBar.css",
+      "PackagePath": "staticwebassets\\css\\NavBar.css"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\css\\OrderDetails.css",
+      "PackagePath": "staticwebassets\\css\\OrderDetails.css"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\css\\ProductDetails.css",
+      "PackagePath": "staticwebassets\\css\\ProductDetails.css"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\css\\SignUp.css",
+      "PackagePath": "staticwebassets\\css\\SignUp.css"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\css\\TestSheet.css",
+      "PackagePath": "staticwebassets\\css\\TestSheet.css"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\css\\ThnakYou.css",
+      "PackagePath": "staticwebassets\\css\\ThnakYou.css"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\electronic.jpg",
+      "PackagePath": "staticwebassets\\electronic.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\furniturs.jpg",
+      "PackagePath": "staticwebassets\\furniturs.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\headset-img.png",
+      "PackagePath": "staticwebassets\\headset-img.png"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\home-inside-background.jpg",
+      "PackagePath": "staticwebassets\\home-inside-background.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\icon-192.png",
+      "PackagePath": "staticwebassets\\icon-192.png"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\mac-book.png",
+      "PackagePath": "staticwebassets\\mac-book.png"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\mail.jpg",
+      "PackagePath": "staticwebassets\\mail.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\new-message.png",
+      "PackagePath": "staticwebassets\\new-message.png"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\sample-data\\weather.json",
+      "PackagePath": "staticwebassets\\sample-data\\weather.json"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\second-third-background.jpg",
+      "PackagePath": "staticwebassets\\second-third-background.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\smart-tv.png",
+      "PackagePath": "staticwebassets\\smart-tv.png"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\thnkz-page.png",
+      "PackagePath": "staticwebassets\\thnkz-page.png"
+    },
+    {
+      "Id": "C:\\Users\\Dilshan\\Desktop\\Shoping-Cart-API\\ShoppingCart-WebAPI\\ShoppingApp.FrontEnd\\wwwroot\\vr-boxx.png",
+      "PackagePath": "staticwebassets\\vr-boxx.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ShoppingApp.FrontEnd.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.ShoppingApp.FrontEnd.props",
+      "PackagePath": "build\\ShoppingApp.FrontEnd.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.ShoppingApp.FrontEnd.props",
+      "PackagePath": "buildMultiTargeting\\ShoppingApp.FrontEnd.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.ShoppingApp.FrontEnd.props",
+      "PackagePath": "buildTransitive\\ShoppingApp.FrontEnd.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

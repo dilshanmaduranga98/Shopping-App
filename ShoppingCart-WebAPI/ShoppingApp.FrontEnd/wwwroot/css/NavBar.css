@@ -1,0 +1,127 @@
+﻿.bg-custom
+{
+    /*background-color: #131a38;*/
+    background-image:linear-gradient(#212d5e, #131a38);
+}
+
+.nav-link, .navbar-brand, .dropdown-menu {
+    color: #ffffff !important;
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar-nav {
+    margin-left: 40px;
+}
+
+
+.nav-item {
+    text-align: center;
+    min-width: 100px;
+    margin:0 10px;
+    height:100%;
+    border-radius:6px;
+    transition:.2s ease-in;
+}
+.nav-item:hover {
+    background-color: #ff6a00 !important;
+}
+
+    .navbar-brand {
+        font-size: 25px;
+        font-weight: 800;
+    }
+
+.dropdown-menu {
+    background-color: #131a38;
+}
+
+.dropdown-menu li a
+{
+    color:#fff !important;
+
+}
+
+.dropdown-item:hover {
+    background-color: #ff6a00 !important;
+}
+
+.user-email
+{
+    color:#fff;
+    padding-right:20px;
+    margin-bottom:0 !important;
+}
+
+.user-email-logout-btn
+{
+    background-color:transparent !important;
+    text-decoration:none !important;
+    color:#fff !important;
+    padding-right:20px !important;
+    transition:.2s linear;
+    padding:6px 20px !important;
+    border-radius:5px;
+}
+
+
+    .user-email-logout-btn:hover 
+    {
+        background-color:#ff6a00 !important;
+    }
+
+    .dropdown-menu {
+        width: 100% !important;
+        padding-top: 30px;
+        /*background-image:linear-gradient(#131a38,#1f2a58);*/
+        background-color: #212d5e
+    }
+
+.cart-with-count
+{
+    position:relative !important;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    height:30% !important;
+}
+
+    .cart-with-count p 
+    {
+        position:absolute !important;
+        top:7px;
+        left:51%;
+        transform:translate(-50%, -50%);
+        cursor:pointer;
+        color:#ff6a00;
+        font-weight:700;
+
+    }
+
+    .cart-with-count i 
+    {
+        font-size:27px;
+    }
+
+    @media only screen and (min-width:1400px) {
+        .navbar-brand {
+        font-size:40px;
+    }
+
+ .nav-link{
+     font-size:18px;
+ }
+
+    .user-email-logout-btn
+    {
+        font-size:18px;
+    }
+
+    .nav-item
+    {
+        width:170px;
+    }
+}
+
+
+/*@media only screen and (min-width:481px) and (max-width:940px)*/
