@@ -1,0 +1,209 @@
+﻿@page "/product-details/{ProductID:int}"
+@inject NavigationManager Navigation
+@inject IProdcutServices ProductService
+@inject IOrderServices OrderService
+@attribute [Authorize]
+
+<link rel="stylesheet" href="/css//ProductDetails.css"/>
+
+<PageTitle>ProductDetail- @ProductID</PageTitle>
+
+
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="/products">AllProducts</a></li>
+        <li class="breadcrumb-item active" aria-current="page">ProductDetails</li>
+    </ol>
+</nav>
+<div class="main-product-details">
+    <h4>Product Details</h4>
+    @if(AllproductData)
+    {
+        <div class="product-container">
+            <div class="product-img-container">
+                <img src="@productData.imageURL" />
+            </div>
+
+            <div class="product-details-container">
+                <div>
+                    <h3>@productData.name <span class="badge bg-danger">@productData.discount% off</span></h3>
+                    <h6>@productData.description</h6>
+                    <p style="font-weight:200; color:#aaa;">@productData.description, @productData.description, @productData.description, @productData.description, @productData.description, @productData.description</p>
+
+                </div>
+
+                <div>
+                    <h4>$ @productData.price</h4>
+                    <p>@productData.discount% off</p>
+                </div>
+
+
+                <div class="product-details-btn-section">
+
+                    @if (productData.stock < 100)
+                    {
+                        <small style="color:#FF0000;">In stock @productData.stock items left</small>
+                    }
+                    else
+                    {
+                        <small>In stock @productData.stock items left</small>
+                    }
+
+                    <div class="details-btns">
+
+                        <div class="count-section">
+                            <button @onclick="ItemCountDecrease" class="item-count-btn">-</button>
+                            <label class="item-count">@ItemCount</label>
+                            <button @onclick="ItemCountIncrease" class="item-count-btn">+</button>
+                        </div>
+                        <button class="btn btn-outline-primary" @onclick="setData">
+                            Add to Cart
+                            <i class="bi bi-cart-plus-fill"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        
+    }else
+    {
+
+        <div class="product-container">
+            <div class="product-img-container">
+                <img style="background-color:#ccc;" src="..." alt="..." />
+            </div>
+
+            <div class="product-details-container w-100">
+                <div style="display:flex; flex-direction:column; width:100%; justify-content:center; align-items:center;">
+                    <div class="col" style="display:flex; flex-direction:column; width:100%; justify-content:center; align-items:center;">
+                        <Spinner Type="SpinnerType.Dots" Class="me-3" Color="SpinnerColor.Warning" Size="SpinnerSize.ExtraLarge" />
+                    </div>
+                </div>
+
+                <div style="display:flex; flex-direction:column; width:100%; justify-content:center; align-items:center;">
+                    <div class="col" style="display:flex; flex-direction:column; width:100%; justify-content:center; align-items:center;">
+                        <Spinner Type="SpinnerType.Dots" Class="me-3" Color="SpinnerColor.Warning" Size="SpinnerSize.ExtraLarge" />
+                    </div>
+                </div>
+
+
+                <div class="product-details-btn-section"></div>
+
+            </div>
+        </div>
+        
+    }
+
+</div>
+
+
+
+
+@code {
+    [Inject] protected ToastService ToastService { get; set; } = default!;
+
+
+    [Parameter]
+    public int ProductID { get; set; }
+
+    public int ItemCount { get; set; } = 1;
+
+    private bool AllproductData;
+
+
+
+
+    ProductModel productData = new ProductModel();
+
+    protected override async Task OnInitializedAsync()
+    {
+        AllproductData = await GetProductDetails(ProductID);
+    }
+
+    private async Task<bool> GetProductDetails(int productID)
+    {
+        try
+        {
+
+            var result =  await ProductService.GetProductDetails(productID);
+            if(result != null)
+            {
+                productData = result;
+                return true;
+            }else
+            {
+                return false;
+            }
+
+        }catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
+
+    private async void setData()
+    {
+
+        var productData = new UserProductModel
+            {
+                productID = ProductID,
+                quantity = ItemCount,
+            };
+
+
+        try
+        {
+
+            if (ItemCount > 0)
+            {
+                var result = await OrderService.AddToCart(productData);
+                if (result == "200")
+                {
+                    ToastService.Notify(new(ToastType.Success, $"Item added to cart!"));
+                    //cartItemCountUpdate.CouintIncrease();
+                }
+                else
+                {
+                    ToastService.Notify(new(ToastType.Warning, $"Item already in cart!"));
+                }
+            }
+
+
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+
+    }
+
+    private void ItemCountIncrease()
+    {
+        if (ItemCount >= 20)
+        {
+            ItemCount = 20;
+        }
+        else
+        {
+            ItemCount += 1;
+        }
+
+    }
+
+    private void ItemCountDecrease()
+    {
+        if (ItemCount == 1 || ItemCount < 1)
+        {
+            ItemCount = 1;
+        }
+        else
+        {
+            ItemCount -= 1;
+        }
+    }
+}

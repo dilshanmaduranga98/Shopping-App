@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ShoppingCart.API</name>
+    </assembly>
+    <members>
+        <member name="M:ShoppingCart.API.Controllers.ordersController.AddToCart(ShoppingCart.Application.DTOs.UserProductDTO)">
+            <summary>
+            Adds a product to the user's cart (for authorized users).
+            </summary>
+            <param name="productReq">The product details to be added.</param>
+            <returns>An IActionResult representing the result of the operation.</returns>
+        </member>
+        <member name="M:ShoppingCart.API.Controllers.ordersController.GetAllCartItems">
+            <summary>
+            Retrieves all cart items for the authorized user.
+            </summary>
+            <returns>An IActionResult representing the list of cart items.</returns>
+        </member>
+        <member name="M:ShoppingCart.API.Controllers.ordersController.DeleteItem(System.Int32)">
+            <summary>
+            Deletes a cart item from the user's cart based on the specified product ID.
+            </summary>
+            <param name="productID">Enter the product ID to be removed from the cart.</param>
+            <returns>An IActionResult representing the result of the operation.</returns>
+        </member>
+        <member name="M:ShoppingCart.API.Controllers.ordersController.UpdateCartItemQuantity(System.Int32,System.Int32)">
+            <summary>
+            Updates the quantity of a product in the cart by its product ID.
+            </summary>
+            <param name="productId">The ID of the product to update.</param>
+            <param name="newQuantity">The new quantity of the particular product.</param>
+            <returns>An IActionResult representing the result of the update.</returns>
+        </member>
+        <member name="M:ShoppingCart.API.Controllers.paymentController.Index">
+            <summary>
+            Handles incoming webhooks.
+            </summary>
+            <returns>An IActionResult representing the result of webhook processing.</returns>
+        </member>
+        <member name="M:ShoppingCart.API.Controllers.paymentController.CheckoutSession">
+            <summary>
+            Initiates the checkout session for processing payments.
+            </summary>
+            <returns>An IActionResult representing the result of the checkout session initiation.</returns>
+        </member>
+        <member name="M:ShoppingCart.API.Controllers.paymentController.GetPaymentgHistory">
+            <summary>
+            Retrieves the payment history for the authorized user.
+            </summary>
+            <returns>An IActionResult representing the payment history data.</returns>
+        </member>
+        <member name="M:ShoppingCart.API.Controllers.paymentController.ViewPaymentHistoryProducts(System.Int32)">
+            <summary>
+            Retrieves the list of paid items from the payment history based on the order ID.
+            </summary>
+            <param name="orderId">The order ID for which to retrieve the paid items.</param>
+            <returns>An IActionResult representing the list of paid items.</returns>
+        </member>
+        <member name="M:ShoppingCart.API.Controllers.productsController.GetAllProducts">
+            <summary>
+            Retrieves all products from the database.
+            </summary>
+            <returns>An IActionResult representing the list of products.</returns>
+        </member>
+        <member name="M:ShoppingCart.API.Controllers.productsController.GetByCategory(System.Int32)">
+            <summary>
+             Retrieves products from the database based on the specified category ID.
+            </summary>
+            <param name="categoryID">Enter the category ID for filtering products.</param>
+            <returns>An IActionResult representing the list of products.</returns>
+        </member>
+        <member name="M:ShoppingCart.API.Controllers.productsController.GetProductByID(System.Int32)">
+            <summary>
+            Retrieves product information by its unique identifier.
+            </summary>
+            <param name="productID">The ID of the product to retrieve.</param>
+            <returns>An asynchronous task that returns an IActionResult.</returns>
+        </member>
+        <member name="M:ShoppingCart.API.Controllers.productsController.ViewCategory">
+            <summary>
+            View all category data from database.
+            </summary>
+            <param></param>
+            <returns>An IActionResult representing the result of the operation.</returns>
+        </member>
+        <member name="M:ShoppingCart.API.Controllers.usersController.UserSignup(ShoppingCart.Application.DTOs.UserDTO)">
+            <summary>
+            Handles user signup.
+            </summary>
+            <param name="userReq">The user data provided in the request body. password must contain A-Z,a-z, any symbole from this(@,_,-),a number and should be at least 8 digits.</param>
+            <returns>An IActionResult representing the result of the signup process.</returns>
+        </member>
+        <member name="M:ShoppingCart.API.Controllers.usersController.UserLogin(ShoppingCart.Application.DTOs.loginDTO)">
+            <summary>
+            Handles user signin.
+            </summary>
+            <param name="userReq">The signin data provided in the request body.</param>
+            <returns>An IActionResult representing the result of the signin process.</returns>
+        </member>
+        <member name="M:ShoppingCart.API.Controllers.usersController.ViewUserInfo">
+            <summary>
+            Retrieves a user info.
+            </summary>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing the User info.</returns>
+        </member>
+        <member name="M:ShoppingCart.API.Controllers.usersController.PostAddress(ShoppingCart.Application.DTOs.AddressDTO)">
+            <summary>
+            Adds a new address for the user.
+            </summary>
+            <param name="addressReq">The address data provided in the request body.</param>
+            <returns>An IActionResult representing the result of the address addition process.</returns>
+        </member>
+        <member name="M:ShoppingCart.API.Controllers.usersController.ViewAddresses">
+            <summary>
+            Retrieves a list of addresses.
+            </summary>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing the list of addresses.</returns>
+        </member>
+        <member name="M:ShoppingCart.API.Controllers.usersController.getrefreshToken(System.String)">
+            <summary>
+            Get new Access token from Refresh token
+            </summary>
+            <param name="refresh_token"></param>
+            <returns></returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,182 @@
+﻿@page "/item"
+@inject IOrderServices OrderService
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+@inject NavigationManager Navigation
+
+
+<link rel="stylesheet" href="/css/ItemCard.css" />
+
+<div class="card" style="width: 15rem;" id="@ItemID">
+    <div class="image-div" role="button" @onclick="() => ProductDetails(ItemID)">
+        <img class="card-img-top w-50 h-50" src="@ImageUrl">
+    </div>
+    
+    <div class="card-body">
+        <h5 class="card-title">@Title and @ItemID</h5>
+        <p class="card-text desciption">
+            @Description
+        </p>
+        
+        <p class="card-text discount">@Discount% off</p>
+        <p class="card-text price"> $@Price  </p>
+        <div class="price-btn">
+            @* <p class="card-text price"> $@Price</p> *@
+           
+            
+            <AuthorizeView>
+                <Authorized>
+                    <div class="count-section">
+                        <button @onclick="ItemCountDecrease" class="item-count-btn">-</button>
+                        <label class="item-count">@ItemCount</label>
+                        <button @onclick="ItemCountIncrease" class="item-count-btn">+</button>
+                    </div>
+                    <button class="btn btn-outline-primary" @onclick="setData">
+                        <i class="bi bi-cart-plus-fill"></i>
+
+                    </button>
+                </Authorized>
+                <NotAuthorized>
+                    <div class="count-section">
+                        <button @onclick="ItemCountDecrease" class="item-count-btn" disabled>-</button>
+                        <label class="item-count">@ItemCount</label>
+                        <button @onclick="ItemCountIncrease" class="item-count-btn" disabled>+</button>
+                    </div>
+                    <a role="button" class="btn btn-outline-primary" href="/login">
+                        <i class="bi bi-cart-plus-fill"></i>
+
+                    </a>
+                </NotAuthorized>
+            </AuthorizeView>
+           
+        </div>
+        
+    </div>
+</div>
+
+
+
+
+@code {
+
+    [Inject] protected ToastService ToastService { get; set; } = default!;
+
+    [Parameter]
+    public int ItemID { get; set; }
+
+    [Parameter]
+    public string ImageUrl { get; set; }    
+
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public string Description { get; set; }
+
+    [Parameter]
+    public double Price { get; set; }
+
+    [Parameter]
+    public double Discount { get; set; }
+
+
+    public int ItemCount { get; set; } = 1;
+
+
+
+
+    private cartObject cartData = new cartObject();
+
+
+
+
+    private void ItemCountIncrease()
+    {
+        if (ItemCount >= 20)
+        {
+            ItemCount = 20;
+        }
+        else
+        {
+            ItemCount += 1;
+        }
+
+    } 
+
+    private void ItemCountDecrease()
+    {
+        if (ItemCount == 1 || ItemCount < 1)
+        {
+            ItemCount = 1;
+        }
+        else
+        {
+            ItemCount -= 1;
+        }
+    }
+
+    private async void addToCart()
+    {
+        var productData = new UserProductModel
+            {
+                productID = ItemID,
+                quantity = ItemCount,
+            };
+
+
+        cartData.productData.Append(productData);
+        await localStorage.SetItemAsync("cartData", cartData);
+    }
+
+
+    private async void setData()
+    {
+
+        var productData = new UserProductModel
+            {
+                productID = ItemID,
+                quantity = ItemCount,
+            };
+
+
+        try
+        {
+
+            if(ItemCount > 0)
+            {
+                var result = await OrderService.AddToCart(productData);
+                if (result == "200")
+                {
+                    ToastService.Notify(new(ToastType.Success, $"Item added to cart!"));
+                    //cartItemCountUpdate.CouintIncrease();
+                }else
+                {
+                    ToastService.Notify(new(ToastType.Warning, $"Item already in cart!"));
+                }
+            }
+
+
+        }catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+
+        Console.WriteLine($"Item ID: {ItemID}");
+        Console.WriteLine($"Item Title: {Title}");
+        Console.WriteLine($"Item Description: {Description}");
+        Console.WriteLine($"Item Price: {Price}");
+        Console.WriteLine($"Item Count: {ItemCount}");
+    }
+
+    private void ProductDetails(int productID)
+    {
+
+        Navigation.NavigateTo($"/product-details/{productID}");
+    }
+
+
+    public class cartObject
+    {
+        public List<UserProductModel> productData { get; set; } = new List<UserProductModel>();
+    }
+
+}

@@ -1,0 +1,99 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = ShoppingApp.FrontEnd
+build_property.RootNamespace = ShoppingApp.FrontEnd
+build_property.ProjectDir = C:\Users\Dilshan\Desktop\Shoping-Cart-API\ShoppingCart-WebAPI\ShoppingApp.FrontEnd\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = false
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Dilshan\Desktop\Shoping-Cart-API\ShoppingCart-WebAPI\ShoppingApp.FrontEnd
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Dilshan/Desktop/Shoping-Cart-API/ShoppingCart-WebAPI/ShoppingApp.FrontEnd/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dilshan/Desktop/Shoping-Cart-API/ShoppingCart-WebAPI/ShoppingApp.FrontEnd/Layout/FooterSection.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XEZvb3RlclNlY3Rpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dilshan/Desktop/Shoping-Cart-API/ShoppingCart-WebAPI/ShoppingApp.FrontEnd/Layout/ItemCard.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XEl0ZW1DYXJkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dilshan/Desktop/Shoping-Cart-API/ShoppingCart-WebAPI/ShoppingApp.FrontEnd/Layout/NavBarComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdkJhckNvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dilshan/Desktop/Shoping-Cart-API/ShoppingCart-WebAPI/ShoppingApp.FrontEnd/Layout/NavigateToLogin.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdmlnYXRlVG9Mb2dpbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dilshan/Desktop/Shoping-Cart-API/ShoppingCart-WebAPI/ShoppingApp.FrontEnd/Layout/PaymentHistory.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XFBheW1lbnRIaXN0b3J5LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dilshan/Desktop/Shoping-Cart-API/ShoppingCart-WebAPI/ShoppingApp.FrontEnd/Pages/Cart.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FydC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dilshan/Desktop/Shoping-Cart-API/ShoppingCart-WebAPI/ShoppingApp.FrontEnd/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dilshan/Desktop/Shoping-Cart-API/ShoppingCart-WebAPI/ShoppingApp.FrontEnd/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dilshan/Desktop/Shoping-Cart-API/ShoppingCart-WebAPI/ShoppingApp.FrontEnd/Pages/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dilshan/Desktop/Shoping-Cart-API/ShoppingCart-WebAPI/ShoppingApp.FrontEnd/Pages/OrderDetails.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3JkZXJEZXRhaWxzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dilshan/Desktop/Shoping-Cart-API/ShoppingCart-WebAPI/ShoppingApp.FrontEnd/Pages/PaymentDone.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGF5bWVudERvbmUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dilshan/Desktop/Shoping-Cart-API/ShoppingCart-WebAPI/ShoppingApp.FrontEnd/Pages/ProductDetails.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdERldGFpbHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dilshan/Desktop/Shoping-Cart-API/ShoppingCart-WebAPI/ShoppingApp.FrontEnd/Pages/Products.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dilshan/Desktop/Shoping-Cart-API/ShoppingCart-WebAPI/ShoppingApp.FrontEnd/Pages/Signup.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2lnbnVwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dilshan/Desktop/Shoping-Cart-API/ShoppingCart-WebAPI/ShoppingApp.FrontEnd/Pages/Weather.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2VhdGhlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dilshan/Desktop/Shoping-Cart-API/ShoppingCart-WebAPI/ShoppingApp.FrontEnd/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dilshan/Desktop/Shoping-Cart-API/ShoppingCart-WebAPI/ShoppingApp.FrontEnd/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-xn5lmi7k0c
+
+[C:/Users/Dilshan/Desktop/Shoping-Cart-API/ShoppingCart-WebAPI/ShoppingApp.FrontEnd/Layout/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-8tczcv4vk9

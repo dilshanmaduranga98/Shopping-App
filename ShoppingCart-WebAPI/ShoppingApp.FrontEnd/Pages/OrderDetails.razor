@@ -1,0 +1,154 @@
+﻿@page "/order-details/{OrderID:int}"
+@inject NavigationManager Navigation
+@inject IOrderServices OrderService
+@attribute [Authorize]
+
+<link rel="stylesheet" href="/css/OrderDetails.css"/>
+
+
+<PageTitle>Order Details</PageTitle>
+
+
+<AuthorizeView>
+    <Authorized>
+
+        <div class="w-100 d-flex align-items-start justify-content-start">
+            <h2 style="color:#2a2a2a; padding:20px 0;">Order Details</h2>
+        </div>
+        <h5 class="fw-bold" style="margin-top:10px;">order #@OrderID</h5>
+        @if(orderProducts.Count >0)
+        {
+            <small style="color:#999; padding-bottom:20px;">@orderProducts.Count items</small>
+        }else
+        {
+            <small style="color:#ff0000b3; padding-bottom:20px;">0 items</small>
+        }
+
+        <div style="padding:20px; border-radius:10px; background-color:#fff; width:100%; height:auto; margin-top:30px;">
+            <div class="list-group table-responsive p-4 m-4">
+    
+                <table class="table align-middle" style="font-family:'Poppins', sans-serif">
+                    <thead>
+                        <tr class="text-center">
+                            <th scope="col" class="fw-bold">Item</th>
+                            <th scope="col" class="fw-bold">Name</th>
+                            <th scope="col" class="fw-bold">Quntity</th>
+                            <th scope="col" class="fw-bold">Price/qty</th>
+                            <th scope="col" class="fw-bold">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    @if(orderProductStatus)
+                    {
+
+                        @foreach (var orderProduct in orderProducts)
+                        {
+                            <tr class="order-details-container text-center">
+                                <th scope="row">
+                                    <img src="@orderProduct.imageURL" width="300" />
+                                </th>
+                                <td>@orderProduct.name</td>
+                                <td class="text-center">@orderProduct.quantity</td>
+                                <td>$@FormatValue(orderProduct.price)</td>
+                                <td>$@FormatValue(orderProduct.totalPrice)</td>
+                            </tr>
+                        }
+
+                            @if (orderProducts.Count == 0)
+                            {
+                                <tr>
+                                    <th class="text-end" colspan="5" style="padding-right:20px; padding-top:20px; padding-bottom:20px; background-color:#777; color:#fff; margin:20px 0;">Sub Total : $ 0.00</th>
+                                </tr>
+                            }else
+                            {
+                                <tr>
+                                    <th class="text-end" colspan="5" style="padding-right:20px; padding-top:20px; padding-bottom:20px; background-color:#777; color:#fff;  margin:20px 0;">Sub Total : $ @FormatValue(subTotal)</th>
+                                </tr>
+                            }
+                            
+                        
+                    }
+                     else
+                    {
+                        <tr class=" flex-row align-items-center justify-content-center w-100">
+                            <th colspan="5" class="text-center">
+                                <Spinner Type="SpinnerType.Dots" Class="me-3" Color="SpinnerColor.Warning" Size="SpinnerSize.Large" />
+                            </th>
+                        </tr>
+                    }
+
+                        @if (orderProducts.Count == 0)
+                        {
+                            <tr class=" flex-row align-items-center justify-content-center w-100">
+                                <th colspan="5" class="text-center">
+                                    <p class="fw-normal m-3">No Item Found! &#128533;</p>
+                                </th>
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+    
+            </div>
+        </div>
+    </Authorized>
+</AuthorizeView>
+@code {
+    [Parameter]
+    public int OrderID { get; set; }
+
+    List<PayiedProductModel> orderProducts = new List<PayiedProductModel>();
+    private bool orderProductStatus;
+    private double subTotal = 0;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        subTotal = 0;
+        orderProductStatus = await GetOrderDetails(OrderID);
+
+
+    }
+
+
+
+    private async Task<bool> GetOrderDetails(int OrderID)
+    {
+        try
+        {
+            var result = await OrderService.GetOrderDetails(OrderID);
+
+            foreach(var item in result)
+            {
+                subTotal += item.totalPrice;
+            }
+            if(result != null)
+            {
+                orderProducts = result;
+                return true;
+            }else
+            {
+                return false;
+            }
+        }catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
+
+    // private string FormatNumber(double number)
+    // {
+    //     // Convert to a formatted string with comma and two decimal places
+    //     string formatted = (number / 100).ToString("N2");
+
+    //     // Replace commas with periods (if needed)
+    //     formatted = formatted.Replace(",", ".");
+
+    //     return formatted;
+    // }
+
+    private string FormatValue(double value)
+    {
+        return value.ToString("F2");
+    }
+}

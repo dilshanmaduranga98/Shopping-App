@@ -1,0 +1,213 @@
+﻿@page "/products"
+@page "/products/{categoryId:int}"
+@using System.Text.Json
+@inject IProdcutServices ProductServices
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager navigation
+
+
+
+<link rel="stylesheet" href="/css/TestSheet.css" />
+
+
+<PageTitle>Products</PageTitle>
+
+
+
+
+
+@if (products == null)
+{
+
+            <div class="spinner d-flex justify-content-center align-items-center h-100">
+                <div class="pinner-border text-success" role="status">
+                    <span class="sr-only"></span>
+                </div>
+            </div>
+
+        
+}else
+{
+
+            <nav aria-label="breadcrumb">
+                
+
+            <div class=".container-xxl product-container">
+
+                @if(categoryID == 0)
+                {
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">AllProducts</li>
+                    </ol>
+                    <div class="product-title-container">
+                        <h1 class="main-header">All Products</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                    </div>
+                    
+                        @if(AllResult)
+                        {
+                            <div class="row g-5 item-container">
+                            @foreach (var product in products)
+                            {
+                                <div class="col">
+                                    <ItemCard 
+                                              ItemID="@product.productID"
+                                              ImageUrl="@product.imageURL"
+                                              Title=@product.name
+                                              Description=@product.description
+                                              Price=@product.price
+                                              Discount=@product.discount />
+                                </div>
+                            }
+                            </div>
+                            
+                        }else
+                        {
+                            <div class="col" style="display:flex; width:100%; justify-content:center; align-items:center;">
+                               
+                                <Spinner Type="SpinnerType.Dots" Class="me-3" Color="SpinnerColor.Warning" Size="SpinnerSize.ExtraLarge" />
+                            </div>
+                        }
+                       
+                    
+                }else
+                {
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">@CategoryName</li>
+                    </ol>
+                    <div class="product-title-container">
+                        <h1 class="main-header">@CategoryName</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                    </div>
+
+                    
+                        @if(Categoryresult)
+                        {
+                            <div class="row g-5 item-container">
+                           
+                            @foreach (var product in productsByCategory)
+                            {
+                                <div class="col">
+
+                                    <ItemCard 
+                                              ItemID="@product.productID"
+                                              ImageUrl="@product.imageURL"
+                                              Title=@product.name
+                                              Description=@product.description
+                                              Price=@product.price
+                                              Discount=@product.discount />
+                                </div>
+                            }
+                            </div>
+                        }else
+                        {
+                            <div class="col" style="display:flex; width:100%; justify-content:center; align-items:center;">
+                                
+                                <Spinner Type="SpinnerType.Dots" Class="me-3" Color="SpinnerColor.Warning" Size="SpinnerSize.ExtraLarge" />
+                            </div>
+                                
+                        }
+                    
+                }
+  
+            </div>
+
+
+            </nav>
+
+}
+
+
+
+@code {
+
+    private string name = string.Empty;
+    private bool AllResult = false;
+    private bool Categoryresult = false;
+
+    [Parameter]
+    public int categoryID { get; set; } = 0;
+
+    private List<ProductModel> products = new List<ProductModel>();
+    private List<ProductModel> productsByCategory =  new List<ProductModel>();
+    private List<CategoryModel> ProductCtegories = new List<CategoryModel>();
+    private string CategoryName = string.Empty;
+
+
+    protected override async Task OnParametersSetAsync()
+    {
+        Task.Delay(3000);
+        productsByCategory = await ProductServices.GetByCategory(categoryID); 
+        ProductCtegories = await ProductServices.GetAllCategories();
+
+        if (ProductCtegories != null)
+        {
+            foreach (var category in ProductCtegories)
+            {
+                if (categoryID == category.categoryID)
+                {
+                    CategoryName = category.name;
+                }
+            }
+        }
+        
+
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Task.Delay(5000);
+
+        AllResult = await GetData();
+       Categoryresult = await GetCategories();
+    }
+
+    private async Task<bool> GetData()
+    {
+        try
+        {
+            products = await ProductServices.GetAllProducts();
+
+            if (products == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+
+        }catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            throw new Exception("Products not found!");
+
+        }
+    }
+
+
+    private async Task<bool> GetCategories()
+    {
+        try
+        {
+            ProductCtegories = await ProductServices.GetAllCategories();
+            if (ProductCtegories == null)
+            {
+                return false;
+            }else
+            {
+                return true;
+            }
+
+
+        }catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            throw new Exception("Categories not found!");
+
+        }
+    }
+}

@@ -1,0 +1,182 @@
+﻿body {
+    width: auto;
+}
+
+
+.card {
+    background-color: #ffffff;
+    display: flex;
+    /*align-items: flex-start;*/
+    flex-direction: column; /* Adjust to stack elements vertically */
+    align-items: stretch;
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05), 0 6px 14px 0 rgba(0, 0, 0, 0.09);
+    height: 500px !important;
+    width:250px !important;
+    position: relative;
+}
+.image-div
+{
+    width:100% !important;
+    height:250px !important;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+    .image-div img
+    {
+        overflow:hidden;
+        cursor:pointer;
+        transition:.3s ease-in-out;
+    }
+
+    .image-div img:hover {
+        transform: scale(1.2);
+    }
+    .card-img-top {
+        object-fit: cover;
+        display: flex;
+        align-items: center;
+        width: 100% !important;
+        height: 100% !important;
+        padding: 10px;
+
+    }
+
+.card-title {
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    color: #1f1f1f !important;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    height:30% !important;
+}
+
+.card-text {
+    margin: 5px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.desciption {
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+    font-size:14px;
+    padding:10px 0;
+}
+
+
+.price
+{
+    font-weight:600;
+    font-size:20px;
+}
+.price-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:10px 0
+}
+
+.discount {
+    position: absolute;
+    top: -10px;
+    right: -5px;
+    width: 60px !important;
+    height: 60px !important;
+    padding:10px !important;
+    border-radius: 50%;
+    background-color: #ff4500;
+    text-align: center;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    align-items: center;
+    line-height:15px;
+    color: white;
+    box-shadow: 0 4px 5px 0 rgba(1, 0, 0, 0.5), 0 6px 14px 0 rgba(0, 0, 0, 0.4);
+}
+
+.btn
+{
+    background-color:#ff4500;
+    border:none;
+    color:#fff;
+    transition:.4s linear;
+}
+
+.btn:hover
+{
+    background-color:transparent;
+    color:#ff4500;
+    border:1px solid #ff4500;
+}
+
+
+.count-section
+{
+    display:flex;
+    align-items:center;
+}
+
+    .count-section .item-count-btn 
+    {
+        border:none;
+        font-size:14px;
+        padding:2px 10px;
+        background-color:rgb(234, 232, 232);
+    }
+
+    .count-section .item-count 
+    {
+        padding:0 20px;
+        font-size:15px;
+        color:rgb(31, 31, 31);
+        font-weight:700;
+    }
+
+
+
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 992px) {
+            .card {
+        height: auto; /* Adjust height as needed */
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        flex-direction: column; /* Stack elements vertically on smaller screens */
+    }
+
+    .image-div {
+        height: 200px; /* Example adjustment for smaller screens */
+    }
+
+    .card-title {
+        font-size: 18px; /* Example adjustment for smaller screens */
+    }
+
+    .description {
+        font-size: 12px; /* Example adjustment for smaller screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .image-div {
+        height: 150px; /* Further adjustment for smaller screens */
+    }
+
+    .card-title {
+        font-size: 16px; /* Further adjustment for smaller screens */
+    }
+
+    .price {
+        font-size: 18px; /* Adjust price font size for smaller screens */
+    }
+
+    .btn {
+        padding: 8px 16px; /* Adjust button padding for smaller screens */
+        font-size: 14px; /* Adjust button font size for smaller screens */
+    }
+}

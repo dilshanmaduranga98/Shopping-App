@@ -1,0 +1,174 @@
+﻿@inject IJSRuntime JSRuntime
+@inject NavigationManager Navigation
+@inject AuthenticationStateProvider authStateProvider
+@inject IProdcutServices ProductService
+@inject IOrderServices OrderService
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+
+
+<link rel="stylesheet" href="/css/NavBar.css"/>
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-custom">
+    <div class="container-fluid">
+        
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        <a class="navbar-brand" href="">
+            @* <img src="https://img.freepik.com/premium-vector/online-shopping-logo-design-vector-template_712837-77.jpg?w=740" alt="" width="60" height="50"> *@
+            Shopping App
+        </a>
+
+        <div class="collapse navbar-collapse " id="navbarTogglerDemo03">
+
+
+
+
+               <AuthorizeView>
+                   <NotAuthorized>
+                       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                           <li class="nav-item ">
+                            <a class="nav-link active text-custom-white" aria-current="page" href="#">Home</a>
+                           </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="products">Products</a>
+                        </li>
+                        
+                           
+                       </ul>
+                   </NotAuthorized>
+                   <Authorized>
+                       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="products">Products</a>
+                        </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Category</a>
+                                <ul class="dropdown-menu bg-custom" aria-labelledby="navbarDropdownMenuLink">
+
+
+                                    @foreach(var category in categories)
+                                    {
+                                        <li><a class="dropdown-item" href="products/@category.categoryID" id="{@category.categoryID}">@category.name</a></li>
+                                    }
+               
+                                </ul>
+                            </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" role="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasScrolling">Payment History</a>
+                        </li>
+
+                            @* <li class="nav-item">
+                                <a class="nav-link" role="button" @onclick="Logout">Logout</a>
+                            </li> *@
+                        </ul>
+                   </Authorized>
+
+                   
+               </AuthorizeView>   
+
+               <AuthorizeView>
+                   <Authorized>
+
+                    <a role="button" class="user-email-logout-btn cart-with-count" href="/cart">
+                        
+                        <i class="bi bi-cart-fill"></i>
+                    </a>
+                    <div class="dropdown ">
+                        <a class="dropdown-toggle user-email-logout-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            @context.User.Identity.Name
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+                            <li><a class="dropdown-item" role="button" @onclick="Logout">Logout</a></li>
+                        </ul>
+                    </div>
+                        @* <a role="button" class="user-email">@context.User.Identity.Name</a> *@
+                        
+                </Authorized>
+            </AuthorizeView>
+            <AuthorizeView>
+                <NotAuthorized>
+
+                    <a role="button" class="nav-link text-custom-white user-email-logout-btn nav-item" href="login">LogIn</a>
+                    
+                </NotAuthorized>
+            </AuthorizeView>
+        </div>
+    </div>
+</nav>
+
+
+@* <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Payments</button> *@
+
+@code {
+
+    private bool access_token = false;
+    private List<CategoryModel> categories = new List<CategoryModel>();
+    private CartInfoModel? cartInfo = new CartInfoModel();
+
+
+    protected override async Task OnInitializedAsync()
+    {
+       
+       
+            // cartInfo = await localStorage.GetItemAsync<CartInfoModel>("cartItems");
+        Console.WriteLine(cartInfo.subTotal);
+        
+
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        
+        if (firstRender)
+        {
+            await viewAllCategory();
+            await CheckAccessToken();
+            cartInfo = await localStorage.GetItemAsync<CartInfoModel>("cartItems");
+            StateHasChanged(); // Ensure the UI is updated after setting access_token
+        }
+    }
+
+    private async Task CheckAccessToken()
+    {
+        string accessToken = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "access_token");
+
+        if(accessToken != null)
+        {
+            access_token = true;
+        }
+    }
+
+    private async Task viewAllCategory()
+    {
+        categories = await ProductService.GetAllCategories();
+    }
+
+   
+
+    private async Task Logout()
+    {
+        // Clear access token from localStorage
+        await JSRuntime.InvokeVoidAsync("localStorage.removeItem", "access_token");
+        await JSRuntime.InvokeVoidAsync("localStorage.removeItem", "access_token");
+
+
+
+        var customAuth = (CustomAuthenticationStateProvider)authStateProvider;
+        await customAuth.UpdateAuthenticationState(null, null);
+        // Navigate to the login page
+        Navigation.NavigateTo("/", true);
+    }
+
+
+}

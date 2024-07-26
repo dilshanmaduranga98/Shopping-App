@@ -1,0 +1,15 @@
+C:\Users\Dilshan\Desktop\Shoping-Cart-API\ShoppingCart-WebAPI\ShoppingCart.Application\bin\Debug\net8.0\ShoppingCart.Application.deps.json
+C:\Users\Dilshan\Desktop\Shoping-Cart-API\ShoppingCart-WebAPI\ShoppingCart.Application\bin\Debug\net8.0\ShoppingCart.Application.dll
+C:\Users\Dilshan\Desktop\Shoping-Cart-API\ShoppingCart-WebAPI\ShoppingCart.Application\bin\Debug\net8.0\ShoppingCart.Application.pdb
+C:\Users\Dilshan\Desktop\Shoping-Cart-API\ShoppingCart-WebAPI\ShoppingCart.Application\bin\Debug\net8.0\ShoppingCart.Domain.dll
+C:\Users\Dilshan\Desktop\Shoping-Cart-API\ShoppingCart-WebAPI\ShoppingCart.Application\bin\Debug\net8.0\ShoppingCart.Domain.pdb
+C:\Users\Dilshan\Desktop\Shoping-Cart-API\ShoppingCart-WebAPI\ShoppingCart.Application\obj\Debug\net8.0\ShoppingCart.Application.csproj.AssemblyReference.cache
+C:\Users\Dilshan\Desktop\Shoping-Cart-API\ShoppingCart-WebAPI\ShoppingCart.Application\obj\Debug\net8.0\ShoppingCart.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dilshan\Desktop\Shoping-Cart-API\ShoppingCart-WebAPI\ShoppingCart.Application\obj\Debug\net8.0\ShoppingCart.Application.AssemblyInfoInputs.cache
+C:\Users\Dilshan\Desktop\Shoping-Cart-API\ShoppingCart-WebAPI\ShoppingCart.Application\obj\Debug\net8.0\ShoppingCart.Application.AssemblyInfo.cs
+C:\Users\Dilshan\Desktop\Shoping-Cart-API\ShoppingCart-WebAPI\ShoppingCart.Application\obj\Debug\net8.0\ShoppingCart.Application.csproj.CoreCompileInputs.cache
+C:\Users\Dilshan\Desktop\Shoping-Cart-API\ShoppingCart-WebAPI\ShoppingCart.Application\obj\Debug\net8.0\Shopping.D959DF90.Up2Date
+C:\Users\Dilshan\Desktop\Shoping-Cart-API\ShoppingCart-WebAPI\ShoppingCart.Application\obj\Debug\net8.0\ShoppingCart.Application.dll
+C:\Users\Dilshan\Desktop\Shoping-Cart-API\ShoppingCart-WebAPI\ShoppingCart.Application\obj\Debug\net8.0\refint\ShoppingCart.Application.dll
+C:\Users\Dilshan\Desktop\Shoping-Cart-API\ShoppingCart-WebAPI\ShoppingCart.Application\obj\Debug\net8.0\ShoppingCart.Application.pdb
+C:\Users\Dilshan\Desktop\Shoping-Cart-API\ShoppingCart-WebAPI\ShoppingCart.Application\obj\Debug\net8.0\ref\ShoppingCart.Application.dll

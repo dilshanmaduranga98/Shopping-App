@@ -1,0 +1,104 @@
+﻿@page "/payment-history"
+@inject IOrderServices OrderService
+@inject NavigationManager Navigation
+@attribute [Authorize]
+
+<div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel" style="font-family:'Poppins', sans-serif;">
+    <div class="offcanvas-header">
+        <h3 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Your Payments</h3>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+
+    <div class="offcanvas-body shadow ">
+        
+        <div style="display:flex; width:100%; align-items:flex-start; margin:20px 0;">
+            <p style="flex-basis:75%;">No of current order details : </p>
+            <p style="font-size:12px; flex-basis:25%; color:#fff; padding:3px 5px; border-radius:10px; text-align:center;" class="bg-dark">@paymentHistories.Count() Orders</p>
+        </div>
+        <ol class="list-group h-100">
+            @if (payamentHistoryStatus)
+            {
+                @foreach (var paymentData in paymentHistories)
+                {
+                    <a role="button" class="list-group-item list-group-item-action text-decoration-none" style="cursor:pointer; padding:20px 20px;" aria-current="true" @onclick="() => OrderDetails(paymentData.order_id)" data-bs-dismiss="offcanvas">
+                    <li class=" d-flex justify-content-between align-items-start">
+
+                        <div class="ms-2 me-auto">
+                            <div class="fw-bold">Order ID : @paymentData.order_id</div>
+                            <p>Total : @FormatNumber(paymentData.total)</p>
+                            <p>Date : @paymentData.order_date</p>
+                        </div>
+
+                            @if (paymentData.order_status == "paid")
+                            {
+                            <span class="badge bg-success rounded-pill">@paymentData.order_status</span>
+                            }
+                            else
+                            {
+                            <span class="badge bg-warning rounded-pill">@paymentData.order_status</span>
+                            }
+
+                    </li>
+                    </a>
+                }
+            }else
+            {
+                <div style="display:flex; flex-direction:column; width:100%; justify-content:center; align-items:center; height:100%;">
+                    <div class="col" style="display:flex; flex-direction:column; width:100%; justify-content:center; align-items:center;">
+                        <Spinner Type="SpinnerType.Dots" Class="me-3" Color="SpinnerColor.Warning" Size="SpinnerSize.Large" />
+                    </div>
+                </div>
+            }
+           
+            
+        </ol>
+    </div>
+</div>
+
+@code {
+    List<PaymentHistoryModel> paymentHistories = new List<PaymentHistoryModel>();
+    private bool payamentHistoryStatus;
+
+    protected override async Task OnInitializedAsync()
+    {
+        payamentHistoryStatus = await GetPaymentHistory();
+    }
+
+    private async Task<bool> GetPaymentHistory()
+    {
+        try
+        {
+            var result = await OrderService.GetPaymentHistoryData();
+
+            if(result != null)
+            {
+                paymentHistories = result;
+                return true;
+            }else
+            {
+                return false;
+            }
+
+        }catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
+
+    private void OrderDetails(int OrderID)
+    {
+
+        Navigation.NavigateTo($"/order-details/{OrderID}");
+    }
+
+    private string FormatNumber(double number)
+    {
+        // Convert to a formatted string with comma and two decimal places
+        string formatted = (number / 100).ToString("N2");
+
+        // Replace commas with periods (if needed)
+        formatted = formatted.Replace(",", ".");
+
+        return formatted;
+    }
+}

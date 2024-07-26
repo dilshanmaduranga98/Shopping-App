@@ -1,0 +1,17 @@
+C:\Users\Dilshan\Desktop\Shoping-Cart-API\ShoppingCart-WebAPI\ShoppingCart.Infrastructure\bin\Debug\net8.0\ShoppingCart.Infrastructure.deps.json
+C:\Users\Dilshan\Desktop\Shoping-Cart-API\ShoppingCart-WebAPI\ShoppingCart.Infrastructure\bin\Debug\net8.0\ShoppingCart.Infrastructure.dll
+C:\Users\Dilshan\Desktop\Shoping-Cart-API\ShoppingCart-WebAPI\ShoppingCart.Infrastructure\bin\Debug\net8.0\ShoppingCart.Infrastructure.pdb
+C:\Users\Dilshan\Desktop\Shoping-Cart-API\ShoppingCart-WebAPI\ShoppingCart.Infrastructure\bin\Debug\net8.0\ShoppingCart.Application.dll
+C:\Users\Dilshan\Desktop\Shoping-Cart-API\ShoppingCart-WebAPI\ShoppingCart.Infrastructure\bin\Debug\net8.0\ShoppingCart.Domain.dll
+C:\Users\Dilshan\Desktop\Shoping-Cart-API\ShoppingCart-WebAPI\ShoppingCart.Infrastructure\bin\Debug\net8.0\ShoppingCart.Application.pdb
+C:\Users\Dilshan\Desktop\Shoping-Cart-API\ShoppingCart-WebAPI\ShoppingCart.Infrastructure\bin\Debug\net8.0\ShoppingCart.Domain.pdb
+C:\Users\Dilshan\Desktop\Shoping-Cart-API\ShoppingCart-WebAPI\ShoppingCart.Infrastructure\obj\Debug\net8.0\ShoppingCart.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\Dilshan\Desktop\Shoping-Cart-API\ShoppingCart-WebAPI\ShoppingCart.Infrastructure\obj\Debug\net8.0\ShoppingCart.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dilshan\Desktop\Shoping-Cart-API\ShoppingCart-WebAPI\ShoppingCart.Infrastructure\obj\Debug\net8.0\ShoppingCart.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Dilshan\Desktop\Shoping-Cart-API\ShoppingCart-WebAPI\ShoppingCart.Infrastructure\obj\Debug\net8.0\ShoppingCart.Infrastructure.AssemblyInfo.cs
+C:\Users\Dilshan\Desktop\Shoping-Cart-API\ShoppingCart-WebAPI\ShoppingCart.Infrastructure\obj\Debug\net8.0\ShoppingCart.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Dilshan\Desktop\Shoping-Cart-API\ShoppingCart-WebAPI\ShoppingCart.Infrastructure\obj\Debug\net8.0\Shopping.C1EB8185.Up2Date
+C:\Users\Dilshan\Desktop\Shoping-Cart-API\ShoppingCart-WebAPI\ShoppingCart.Infrastructure\obj\Debug\net8.0\ShoppingCart.Infrastructure.dll
+C:\Users\Dilshan\Desktop\Shoping-Cart-API\ShoppingCart-WebAPI\ShoppingCart.Infrastructure\obj\Debug\net8.0\refint\ShoppingCart.Infrastructure.dll
+C:\Users\Dilshan\Desktop\Shoping-Cart-API\ShoppingCart-WebAPI\ShoppingCart.Infrastructure\obj\Debug\net8.0\ShoppingCart.Infrastructure.pdb
+C:\Users\Dilshan\Desktop\Shoping-Cart-API\ShoppingCart-WebAPI\ShoppingCart.Infrastructure\obj\Debug\net8.0\ref\ShoppingCart.Infrastructure.dll

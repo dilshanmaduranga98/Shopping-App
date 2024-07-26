@@ -1,0 +1,107 @@
+﻿@page "/login"
+@using System.ComponentModel.DataAnnotations
+@inject NavigationManager Navigation
+@inject IJSRuntime JSRuntime
+@inject IUserServices UserService
+@inject AuthenticationStateProvider authStateProvider
+
+
+<link rel="stylesheet" href="/css/Login.css" />
+
+<PageTitle>Login</PageTitle>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Login</li>
+    </ol>
+</nav>
+<div class="login-main-container">
+   
+   
+    <div class="image-section">
+        <img src="https://img.freepik.com/free-photo/computer-security-with-login-password-padlock_107791-16191.jpg?w=740&t=st=1719208128~exp=1719208728~hmac=58c411f12166d7409201b29dc76074b76d29c9639221ac8a212f3ad6f9681fda"/>
+    </div>
+    <div class="login-sub-container">
+        <div class="header-section">
+            <h1>Sign In</h1>
+            <p>Welcome Back! Let's continue where you left off.</p>
+           
+        </div>
+
+
+        <div class="main-container">
+            <EditForm class="login-form" Model="@loginData" OnValidSubmit="GetAccessToken">
+                <DataAnnotationsValidator/> 
+                <div class="form-group">
+                   
+
+                    <input type="email" class="form-control" id="Email1" aria-describedby="emailHelp" placeholder="Enter email" @bind-value="loginData.email"/>
+                    <ValidationMessage For=@(() => loginData.email)/> 
+
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    
+                </div>
+                <div class="form-group">
+
+                    <input type="password" class="form-control" id="Password1" placeholder="Enter password" @bind-value="loginData.password"/>
+                    <ValidationMessage For=@(() => loginData.password) />
+                
+                </div>
+
+                <button type="submit" class="btn btn-primary">SignIn</button>
+                <small class="signup-messsage">If you don't have an account, please <a href="signup">Signup</a> here</small>
+            </EditForm>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@code {
+
+    [Inject] protected ToastService ToastService { get; set; }
+
+
+
+    private LoginModel loginData = new LoginModel();
+
+    public string accessToken = string.Empty;
+
+    private string resultMessage = string.Empty;
+
+
+
+    private async Task GetAccessToken()
+    {
+        try
+        {
+            Console.WriteLine("clicked");
+            var token = await UserService.GetAccessToken(loginData);
+
+
+            var customAuth = (CustomAuthenticationStateProvider)authStateProvider;
+            await customAuth.UpdateAuthenticationState(token, loginData.email);
+
+            
+            if(token != null)
+            {
+                Navigation.NavigateTo("/products");
+                accessToken = token.Access_Token;
+                await Task.Delay(2000);
+
+
+            }else
+            {
+                await Task.Delay(3000);
+                
+            }
+
+
+        }catch (Exception ex)
+        {
+            throw new Exception($"Error Occured when try to login!, error  : {ex.Message}");
+        }
+    }
+}

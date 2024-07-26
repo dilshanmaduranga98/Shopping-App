@@ -1,0 +1,42 @@
+﻿.main-thankz-container {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    
+}
+
+
+.thankz-container
+{
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+    width:80%;
+    min-height:85vh;
+}
+
+
+.msg-thankz {
+    font-family: 'Poppins', sans-serif;
+}
+
+    .msg-thankz h2 {
+        font-family: "Satisfy", cursive;
+        font-size: 90px;
+        color: #ff4500;
+    }
+    .msg-thankz p {
+        margin-bottom: 30px !important;
+    }
+    .msg-thankz .goback-btn {
+        text-decoration: none;
+        background-color: #ff4500;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 8px;
+    }
+
+        .msg-thankz .goback-btn:hover {
+            background-color: #ff9400 !important;
+        }
